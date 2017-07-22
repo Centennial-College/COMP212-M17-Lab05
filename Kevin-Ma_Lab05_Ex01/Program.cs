@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
@@ -32,5 +29,29 @@ namespace Kevin_Ma_Lab05_Ex01
         }
 
         //Create windows form. Two buttons, RNG to generate double list, RNG to generate int array.
+        /// <summary>
+        /// This method searches an array using the linear-search algorithm.
+        /// </summary>
+        /// <typeparam name="T">the type of the search key</typeparam>
+        /// <param name="array">the array to be searched</param>
+        /// <param name="key">the search key</param>
+        /// <returns>
+        ///     if the search key is found, returns the location in the array
+        ///     else, returns -1
+        /// </returns>
+        private static int Search<T>(T[] array, T key) where T : IComparable<T>
+        {
+            //iterate through the array to find the search key
+            for (int i = 0; i < array.Length; i++)
+            {
+                //since T will implement IComparable, we can use CompareTo to search the key
+                //if CompareTo returns 0, that means the two objects are the same
+                if (array[i].CompareTo(key) == 0)
+                    return i;
+            }
+
+            //If execution reaches here that means key was not found
+            return -1;
+        }
     }
 }
