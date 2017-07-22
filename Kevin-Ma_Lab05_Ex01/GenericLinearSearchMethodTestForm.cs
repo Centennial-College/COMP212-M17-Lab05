@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Kevin_Ma_Lab05_Ex01
 {
-    public partial class Form1 : Form
+    public partial class GenericLinearSearchMethodTestForm : Form
     {
-        public Form1()
+        public GenericLinearSearchMethodTestForm()
         {
             InitializeComponent();
         }
