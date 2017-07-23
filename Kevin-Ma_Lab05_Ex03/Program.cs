@@ -67,28 +67,28 @@ namespace Kevin_Ma_Lab05_Ex03
         }
 
         //Adding
-        private static void AddLinkedListItem(LinkedList<Student> list, Student obj)
+        private static void AddLinkedListItem(LinkedList<Student> name, Student @object)
         {
-            list.AddLast(obj);
+            name.AddLast(@object);
         }
 
         //Removing
-        private static void RemoveLinkedListItem(LinkedList<Student> list, Student obj)
+        private static void RemoveLinkedListItem(LinkedList<Student> name, Student @object)
         {
-            list.Remove(obj);
+            name.Remove(@object);
         }
 
         //Displaying
-        private static void PrintLinkedList(LinkedList<Student> list)
+        private static void PrintLinkedList(LinkedList<Student> name)
         {
 
-            if (list.First == null)
+            if (name.First == null)
             {
                 Console.WriteLine("Empty list");
             }
             else
             {
-                foreach (Student item in list)
+                foreach (Student item in name)
                 {
                     Console.WriteLine($"{item} ");
                 }
@@ -97,15 +97,15 @@ namespace Kevin_Ma_Lab05_Ex03
         }
 
         //Searching - returns the first node that contains 'obj'
-        private static LinkedListNode<Student> SearchLinkedListItem(LinkedList<Student> list, Student obj)
+        private static LinkedListNode<Student> SearchLinkedListItem(LinkedList<Student> name, Student @object)
         {
-            return list.Find(obj);
+            return name.Find(@object);
         }
 
         //Clearing the linked list
-        private static void RemoveAllLinkedListItems(LinkedList<Student> list)
+        private static void RemoveAllLinkedListItems(LinkedList<Student> name)
         {
-            list.Clear();
+            name.Clear();
         }
     }
 }
