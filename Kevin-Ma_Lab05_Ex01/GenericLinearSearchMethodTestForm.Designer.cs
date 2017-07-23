@@ -39,8 +39,8 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.generateDoubleArrayBtn = new System.Windows.Forms.Button();
             this.generateIntArrayBtn = new System.Windows.Forms.Button();
-            this.generatedLbl = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.generatedArrayLbl = new System.Windows.Forms.Label();
+            this.generatedArrayListBox = new System.Windows.Forms.ListBox();
             this.queryResultsGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -70,8 +70,8 @@
             // 
             // generateArrayGrpBox
             // 
-            this.generateArrayGrpBox.Controls.Add(this.listBox1);
-            this.generateArrayGrpBox.Controls.Add(this.generatedLbl);
+            this.generateArrayGrpBox.Controls.Add(this.generatedArrayListBox);
+            this.generateArrayGrpBox.Controls.Add(this.generatedArrayLbl);
             this.generateArrayGrpBox.Controls.Add(this.generateDoubleArrayBtn);
             this.generateArrayGrpBox.Controls.Add(this.generateIntArrayBtn);
             this.generateArrayGrpBox.Controls.Add(this.numOfEleTb);
@@ -164,6 +164,7 @@
             this.generateDoubleArrayBtn.TabIndex = 6;
             this.generateDoubleArrayBtn.Text = "Double Array";
             this.generateDoubleArrayBtn.UseVisualStyleBackColor = true;
+            this.generateDoubleArrayBtn.Click += new System.EventHandler(this.generateDoubleArrayBtn_Click);
             // 
             // generateIntArrayBtn
             // 
@@ -174,24 +175,25 @@
             this.generateIntArrayBtn.TabIndex = 5;
             this.generateIntArrayBtn.Text = "Int Array";
             this.generateIntArrayBtn.UseVisualStyleBackColor = true;
+            this.generateIntArrayBtn.Click += new System.EventHandler(this.generateIntArrayBtn_Click);
             // 
-            // generatedLbl
+            // generatedArrayLbl
             // 
-            this.generatedLbl.AutoSize = true;
-            this.generatedLbl.Location = new System.Drawing.Point(6, 100);
-            this.generatedLbl.Name = "generatedLbl";
-            this.generatedLbl.Size = new System.Drawing.Size(151, 31);
-            this.generatedLbl.TabIndex = 7;
-            this.generatedLbl.Text = "Generated";
+            this.generatedArrayLbl.AutoSize = true;
+            this.generatedArrayLbl.Location = new System.Drawing.Point(6, 100);
+            this.generatedArrayLbl.Name = "generatedArrayLbl";
+            this.generatedArrayLbl.Size = new System.Drawing.Size(229, 31);
+            this.generatedArrayLbl.TabIndex = 7;
+            this.generatedArrayLbl.Text = "Generated Array";
             // 
-            // listBox1
+            // generatedArrayListBox
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(9, 135);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(268, 277);
-            this.listBox1.TabIndex = 8;
+            this.generatedArrayListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generatedArrayListBox.FormattingEnabled = true;
+            this.generatedArrayListBox.Location = new System.Drawing.Point(9, 135);
+            this.generatedArrayListBox.Name = "generatedArrayListBox";
+            this.generatedArrayListBox.Size = new System.Drawing.Size(268, 277);
+            this.generatedArrayListBox.TabIndex = 8;
             // 
             // queryResultsGroupBox
             // 
@@ -237,8 +239,8 @@
         private System.Windows.Forms.Button generateIntArrayBtn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.Label generatedLbl;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label generatedArrayLbl;
+        private System.Windows.Forms.ListBox generatedArrayListBox;
         private System.Windows.Forms.GroupBox queryResultsGroupBox;
     }
 }
