@@ -42,32 +42,24 @@ namespace Kevin_Ma_Lab05_Ex04
             RemoveDictionaryItem(employeesDictionary, employees[0]);
             PrintDictionary(employeesDictionary);
 
-            /*
-            Console.WriteLine("Searching for a student in the LinkedList");
-            Student foundStudent = SearchLinkedListItem(lnkStudent, students[2]).Value;
-            Console.Write($"The student with '{students[2]}' was ");
-            if (foundStudent == null)
-                Console.Write(" not ");
-            Console.WriteLine("found in the LinkedList.");
-
-            if (SearchLinkedListItem(lnkStudent, new Student(22, "Michelle")) != null)
+            Console.WriteLine("Searching for an employee in the SortedDictionary");
+            Console.Write("The employee with employee Id of #4 was ");
+            if (SearchDictionaryItem(employeesDictionary, 4) == null)
             {
-                foundStudent = SearchLinkedListItem(lnkStudent, new Student(22, "Michelle")).Value;
+                Console.Write("not ");
             }
-            else
+            Console.WriteLine("found in the sorted dictionary.");
+            Console.WriteLine();
+            Console.Write("The employee with employee Id of #12 was ");
+            if (SearchDictionaryItem(employeesDictionary, 12) == null)
             {
-                foundStudent = null;
+                Console.Write("not ");
             }
-            Console.Write($"The student with 'ID: 33 Name: Michelle' was ");
-            if (foundStudent == null)
-                Console.Write(" not ");
-            Console.WriteLine("found in the LinkedList.");
+            Console.WriteLine("found in the sorted dictionary.");
             Console.WriteLine();
 
-            Console.WriteLine("Clearing the linked list");
-            RemoveAllLinkedListItems(lnkStudent);
-            PrintLinkedList(lnkStudent);
-            */
+            Console.WriteLine("Finding Employee with highest salary in this sorted dictionary.");
+            Console.WriteLine($"The employee with the highest salary is: {MaxDictionaryItem(employeesDictionary)}");
         }
 
         //adding an item to the sorted dictionary
@@ -101,17 +93,17 @@ namespace Kevin_Ma_Lab05_Ex04
         //searching for an employee based on employee id
         private static Employee SearchDictionaryItem(SortedDictionary<int, Employee> var, int empId)
         {
-            return var[empId] == null ? null : var[empId];
+            return var.ContainsKey(empId) ? var[empId] : null;
         }
 
         //finding an emp with highest salary
         private static Employee MaxDictionaryItem(SortedDictionary<int, Employee> var)
         {
-            Employee highestPaidEmp = var[0];
-            for (int i = 0; i < var.Count; i++)
+            Employee highestPaidEmp = new Employee("Noob", 0);
+            foreach (var key in var.Keys)
             {
-                if (var[i].Salary > highestPaidEmp.Salary)
-                    highestPaidEmp = var[i];
+                if (var[key].Salary > highestPaidEmp.Salary)
+                    highestPaidEmp = var[key];
             }
 
             return highestPaidEmp;
