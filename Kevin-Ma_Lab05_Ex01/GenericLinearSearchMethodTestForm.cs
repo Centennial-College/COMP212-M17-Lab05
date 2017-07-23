@@ -29,12 +29,15 @@ namespace Kevin_Ma_Lab05_Ex01
         {
             //Clears array if already has contents
             generatedArray = null;
+            searchKeyTb.Clear();
+            searchBtn.Enabled = clearBtn.Enabled = false;
 
             //validate to ensure numeric input
             try
             {
                 int arraySize = int.Parse(numOfEleTb.Text);
                 int[] newIntArray = new int[arraySize];
+            searchBtn.Enabled = clearBtn.Enabled = false;
 
                 for (int i = 0; i < arraySize; i++)
                 {
@@ -58,6 +61,8 @@ namespace Kevin_Ma_Lab05_Ex01
         {
             //Clears array if already has contents
             generatedArray = null;
+            searchKeyTb.Clear();
+            searchBtn.Enabled = clearBtn.Enabled = false;
 
             //validate to ensure numeric input
             try
@@ -82,19 +87,6 @@ namespace Kevin_Ma_Lab05_Ex01
             {
                 MessageBox.Show("Please enter a positive integer in the 'Number of Elements' text box.", "Error - Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private T[] GenerateArray<T>(int size)
-        {
-            T[] newArray = new T[size];
-            Random rng = new Random();
-
-            for (int i = 0; i < size; i++)
-            {
-                //newArray[i] = rng.Next();
-            }
-
-            return newArray;
         }
 
         //Create windows form. Two buttons, RNG to generate double list, RNG to generate int array.
@@ -125,8 +117,13 @@ namespace Kevin_Ma_Lab05_Ex01
 
         private void generatedArrayListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //disables the search/clear buttons if no search key selected
+            searchBtn.Enabled = clearBtn.Enabled = generatedArrayListBox.SelectedItem != null;
+
             if (generatedArrayListBox.SelectedItem != null)
+            {
                 searchKeyTb.Text = generatedArrayListBox.SelectedItem.ToString();
+            }
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
