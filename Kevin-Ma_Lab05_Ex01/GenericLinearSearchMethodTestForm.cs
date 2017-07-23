@@ -18,7 +18,8 @@ namespace Kevin_Ma_Lab05_Ex01
     public partial class GenericLinearSearchMethodTestForm : Form
     {
         Random rng = new Random();
-        object[] generatedArray = null;
+        int[] generatedIntArray = null;
+        double[] generatedDoubleArray = null;
 
         public GenericLinearSearchMethodTestForm()
         {
@@ -27,8 +28,8 @@ namespace Kevin_Ma_Lab05_Ex01
 
         private void generateIntArrayBtn_Click(object sender, EventArgs e)
         {
-            //Clears array if already has contents
-            generatedArray = null;
+            //Clears the double array before creating an int array
+            generatedDoubleArray = null;
             searchKeyTb.Clear();
             searchBtn.Enabled = clearBtn.Enabled = false;
 
@@ -36,17 +37,17 @@ namespace Kevin_Ma_Lab05_Ex01
             try
             {
                 int arraySize = int.Parse(numOfEleTb.Text);
-                int[] newIntArray = new int[arraySize];
-            searchBtn.Enabled = clearBtn.Enabled = false;
+                generatedIntArray = new int[arraySize];
+                searchBtn.Enabled = clearBtn.Enabled = false;
 
                 for (int i = 0; i < arraySize; i++)
                 {
-                    newIntArray[i] = rng.Next(1000);    //max value generated 1000
+                    generatedIntArray[i] = rng.Next(1000);    //max value generated 1000
                 }
 
                 //Display in the 'Generated' section of the UI
                 generatedArrayListBox.Items.Clear();
-                foreach (var @int in newIntArray)
+                foreach (var @int in generatedIntArray)
                 {
                     generatedArrayListBox.Items.Add(@int);
                 }
@@ -59,8 +60,8 @@ namespace Kevin_Ma_Lab05_Ex01
 
         private void generateDoubleArrayBtn_Click(object sender, EventArgs e)
         {
-            //Clears array if already has contents
-            generatedArray = null;
+            //Clears the int array before creating an double array
+            generatedIntArray = null;
             searchKeyTb.Clear();
             searchBtn.Enabled = clearBtn.Enabled = false;
 
@@ -68,17 +69,17 @@ namespace Kevin_Ma_Lab05_Ex01
             try
             {
                 int arraySize = int.Parse(numOfEleTb.Text);
-                double[] newIntArray = new double[arraySize];
+                generatedDoubleArray = new double[arraySize];
 
                 for (int i = 0; i < arraySize; i++)
                 {
                     //round to 3 decimal places
-                    newIntArray[i] = Math.Round(rng.NextDouble(), 3);
+                    generatedDoubleArray[i] = Math.Round(rng.NextDouble(), 3);
                 }
 
                 //Display in the 'Generated' section of the UI
                 generatedArrayListBox.Items.Clear();
-                foreach (var @double in newIntArray)
+                foreach (var @double in generatedDoubleArray)
                 {
                     generatedArrayListBox.Items.Add(@double);
                 }
@@ -130,6 +131,51 @@ namespace Kevin_Ma_Lab05_Ex01
         {
             searchKeyTb.Clear();
             generatedArrayListBox.ClearSelected();
+            searchBtn.Enabled = clearBtn.Enabled = false;
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int queryResultIndex = -1;
+
+                //call generic Search method with int array and key IFF int array was generated
+                if (generatedIntArray != null)
+                {
+                    //attempt to search for the selected key
+                    queryResultIndex = Search(generatedIntArray, int.Parse(searchKeyTb.Text));
+                }
+                //call generic Search method with double array and key IFF double array was generated
+                else
+                {
+                    queryResultIndex = Search(generatedDoubleArray, double.Parse(searchKeyTb.Text));
+                }
+
+                //search key not found in the array
+                if (queryResultIndex == -1)
+                {
+                    MessageBox.Show($"The search key {searchKeyTb.Text} could not be found in the array.", "Search Key Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                //search key found in the array
+                else
+                {
+                    MessageBox.Show($"The search key {searchKeyTb.Text} was found at the {queryResultIndex} position in the array.", "Search Key Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter numeric input in the 'Search Key' text box.", "Error - Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void searchKeyTb_TextChanged(object sender, EventArgs e)
+        {
+            //enables the search and clear buttons if an array has been generated
+            if (generatedIntArray != null || generatedDoubleArray != null)
+            {
+                searchBtn.Enabled = clearBtn.Enabled = true;
+            }
         }
     }
 }
