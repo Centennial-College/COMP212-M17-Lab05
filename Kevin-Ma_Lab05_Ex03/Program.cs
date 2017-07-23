@@ -81,9 +81,17 @@ namespace Kevin_Ma_Lab05_Ex03
         //Displaying
         private static void PrintLinkedList(LinkedList<Student> list)
         {
-            foreach (Student item in list)
+
+            if (list.First == null)
             {
-                Console.WriteLine($"{item} ");
+                Console.WriteLine("Empty list");
+            }
+            else
+            {
+                foreach (Student item in list)
+                {
+                    Console.WriteLine($"{item} ");
+                }
             }
             Console.WriteLine();
         }
