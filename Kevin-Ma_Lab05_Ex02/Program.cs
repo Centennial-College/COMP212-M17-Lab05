@@ -24,6 +24,10 @@ namespace Kevin_Ma_Lab05_Ex02
             double[] doubleArray = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7 };
             char[] charArray = { 'H', 'E', 'L', 'L', 'O' };
 
+            Console.WriteLine("==================================================================================================");
+            Console.WriteLine("COMP212-M17 Lab05 Exercise #2");
+            Console.WriteLine("==================================================================================================");
+
             Console.Write("Array intArray contains: ");
             DisplayArray(intArray); // pass an int array argument
             Console.Write("Array doubleArray contains: ");
