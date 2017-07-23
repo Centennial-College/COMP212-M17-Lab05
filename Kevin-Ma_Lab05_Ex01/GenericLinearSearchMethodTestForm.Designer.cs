@@ -154,6 +154,7 @@
             this.clearBtn.TabIndex = 4;
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // generateDoubleArrayBtn
             // 
@@ -194,6 +195,7 @@
             this.generatedArrayListBox.Name = "generatedArrayListBox";
             this.generatedArrayListBox.Size = new System.Drawing.Size(268, 277);
             this.generatedArrayListBox.TabIndex = 8;
+            this.generatedArrayListBox.SelectedIndexChanged += new System.EventHandler(this.generatedArrayListBox_SelectedIndexChanged);
             // 
             // queryResultsGroupBox
             // 

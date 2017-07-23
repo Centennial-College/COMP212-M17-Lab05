@@ -122,5 +122,17 @@ namespace Kevin_Ma_Lab05_Ex01
             //If execution reaches here that means key was not found
             return -1;
         }
+
+        private void generatedArrayListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (generatedArrayListBox.SelectedItem != null)
+                searchKeyTb.Text = generatedArrayListBox.SelectedItem.ToString();
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            searchKeyTb.Clear();
+            generatedArrayListBox.ClearSelected();
+        }
     }
 }
